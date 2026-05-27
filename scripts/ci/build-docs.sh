@@ -64,7 +64,11 @@ mkdir -p "$GH_PAGES/api"
 npm install --no-save js-dossier
 
 command=(
-  java -jar node_modules/js-dossier/dossier.jar
+  java
+  --add-opens=java.base/java.lang=ALL-UNNAMED
+  --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+  --add-opens=java.base/java.util=ALL-UNNAMED
+  -jar node_modules/js-dossier/dossier.jar
   --output "$GH_PAGES/api"
   --readme scripts/ci/dossier_readme.md
   --source_url_template
